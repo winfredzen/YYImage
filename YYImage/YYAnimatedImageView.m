@@ -47,7 +47,7 @@ static int64_t _YYDeviceMemoryFree() {
 }
 
 /**
- A proxy used to hold a weak object.
+ A proxy used to hold a weak object.避免循环引用
  It can be used to avoid retain cycles, such as the target in NSTimer or CADisplayLink.
  */
 @interface _YYImageWeakProxy : NSProxy
@@ -124,13 +124,13 @@ typedef NS_ENUM(NSUInteger, YYAnimatedImageType) {
     @package
     UIImage <YYAnimatedImage> *_curAnimatedImage;
     
-    dispatch_semaphore_t _lock; ///< lock for _buffer
+    dispatch_semaphore_t _lock; ///< lock for _buffer信号量
     NSOperationQueue *_requestQueue; ///< image request queue, serial
     
     CADisplayLink *_link; ///< ticker for change frame
     NSTimeInterval _time; ///< time after last frame
     
-    UIImage *_curFrame; ///< current frame to display
+    UIImage *_curFrame; ///< current frame to display当前帧
     NSUInteger _curIndex; ///< current frame index (from 0)
     NSUInteger _totalFrameCount; ///< total frame count
     
@@ -150,7 +150,7 @@ typedef NS_ENUM(NSUInteger, YYAnimatedImageType) {
 - (void)calcMaxBufferCount;
 @end
 
-/// An operation for image fetch
+/// An operation for image fetch 多线程operation
 @interface _YYAnimatedImageViewFetchOperation : NSOperation
 @property (nonatomic, weak) YYAnimatedImageView *view;
 @property (nonatomic, assign) NSUInteger nextIndex;
@@ -252,7 +252,7 @@ typedef NS_ENUM(NSUInteger, YYAnimatedImageType) {
              _buffer = [NSMutableDictionary new];
              dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
                  // Capture the dictionary to global queue,
-                 // release these images in background to avoid blocking UI thread.
+                 // release these images in background to avoid blocking UI thread.在后台释放images
                  [holder class];
              });
          }

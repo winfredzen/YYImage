@@ -95,7 +95,7 @@ typedef NS_ENUM(NSUInteger, YYImageBlendOperation) {
 
 /**
  An image decoder to decode image data.
- 
+ 解码image数据
  @discussion This class supports decoding animated WebP, APNG, GIF and system
  image format such as PNG, JPG, JP2, BMP, TIFF, PIC, ICNS and ICO. It can be used 
  to decode complete image data, or to decode incremental image data during image 

@@ -37,7 +37,8 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  If the image has more than one frame, set this value to `YES` will automatically 
  play/stop the animation when the view become visible/invisible.
- 
+ 如果图片有多个个帧，自动播放
+ 在view可见和不可见时，播放/停止动画
  The default value is `YES`.
  */
 @property (nonatomic) BOOL autoPlayAnimatedImage;
@@ -61,7 +62,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  The animation timer's runloop mode, default is `NSRunLoopCommonModes`.
- 
+ NSDefaultRunLoopMode在scrollview滚动时将会使动画停止
  Set this property to `NSDefaultRunLoopMode` will make the animation pause during
  UIScrollView scrolling.
  */

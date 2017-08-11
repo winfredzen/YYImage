@@ -43,10 +43,10 @@
     [_scrollView addSubview:label];
     
     [self addImageWithName:@"niconiconi" text:@"Animated GIF"];
-    [self addImageWithName:@"wall-e" text:@"Animated WebP"];
-    [self addImageWithName:@"pia" text:@"Animated PNG (APNG)"];
-    [self addFrameImageWithText:@"Frame Animation"];
-    [self addSpriteSheetImageWithText:@"Sprite Sheet Animation"];
+    //[self addImageWithName:@"wall-e" text:@"Animated WebP"];
+    //[self addImageWithName:@"pia" text:@"Animated PNG (APNG)"];
+    //[self addFrameImageWithText:@"Frame Animation"];
+    //[self addSpriteSheetImageWithText:@"Sprite Sheet Animation"];
     
     _scrollView.panGestureRecognizer.cancelsTouchesInView = YES;
 }
@@ -107,7 +107,9 @@
     imageView.centerX = self.view.width / 2;
     imageView.top = [(UIView *)[_scrollView.subviews lastObject] bottom] + 30;
     [_scrollView addSubview:imageView];
+    //点击
     [YYImageExampleHelper addTapControlToAnimatedImageView:imageView];
+    //拖动
     [YYImageExampleHelper addPanControlToAnimatedImageView:imageView];
     for (UIGestureRecognizer *g in imageView.gestureRecognizers) {
         g.delegate = self;

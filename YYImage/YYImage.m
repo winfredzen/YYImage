@@ -96,7 +96,7 @@ static CGFloat _NSStringPathScale(NSString *string) {
     if ([name hasSuffix:@"/"]) return nil;
     
     NSString *res = name.stringByDeletingPathExtension;
-    NSString *ext = name.pathExtension;
+    NSString *ext = name.pathExtension;//扩展名
     NSString *path = nil;
     CGFloat scale = 1;
     

@@ -77,7 +77,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  Preload all frame image to memory.
- 
+ 预先加载image到内存
  @discussion Set this property to `YES` will block the calling thread to decode 
  all animation frame image to memory, set to `NO` will release the preloaded frames.
  If the image is shared by lots of image views (such as emoticon), preload all
